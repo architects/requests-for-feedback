@@ -1,12 +1,3 @@
-Card Processor 0.1!
---------------------------------
+# Requests for feedback
 
-I chose to solve this problem utilizing OOP in ruby. I picked ruby because it
-is the language I am most comfortable with. I developed two main classes, a Card
-class that takes care of all the card functionality and a card processor class
-which does all the card processing work. Doing it this way enabled me to focus
-first on the card and make sure it was working and then extending it with the
-processor.
-
-My code requires the luhn-ruby gem and rspec for running tests. I also used pry
-for general debugging while finding a solution.
+We review Ruby beginners code and help them come up in the game.
