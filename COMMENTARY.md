@@ -49,6 +49,8 @@ Second - is this a debit card or a credit card? Does the card have a balance or 
 
 Modeling object classes in Ruby forces you to be very user centered.  Ask yourself, where will this class be used? A `Card` class could conceivably be used on a web form, in a back end invoicing system. 
 
+This would help you develop a better interface for the Card class.
+
 ### Poor Modeling of the data types
 
 How can it be possible that the balance is "ERROR"? Why is the balance a string? How am I going to do math on a string?
@@ -66,21 +68,23 @@ How can it be possible that the balance is "ERROR"? Why is the balance a string?
 
 Look at all of the acrobatics you have to go through just to make your currency amounts support math.
 
+Store all of your currency amounts in cents.  There are no fractions of pennies, really.  When you want to display it as currency, use a currency formatter which converts from the numeric value to the display value.
+
 ### Poor Modeling of the Interface
 
 The fact that you are using strings to represent balance, and
 limit, and other values makes sense in light of the fact that the code that you produced is making the assumption that it is going to be run and output to a Terminal.
 
-Why is your code making this assumption?  
+**Why is your code making this assumption?**  
 
 This comes back to the convention argument, and the
 importance of developing habits which make the decisions you have to make easier for yourself.  
 
-If you had followed the Ruby gem structure, you would have had a
+I suspect if you had followed the Ruby gem structure, you would have had a
 `bin/card-processor` executable act as the main entry point to your
 app.  
 
-This would have encouraged you to model the interface, separately from the domain model.  When the app is called from the bin you assume it is a CLI, you detect the TTY, you know to use puts.  Shit like that.
+This would have encouraged you to model the interface separately from the domain model.  When the app is called from the bin you assume it is a CLI, you detect the TTY, you know to use puts. 
 
 But if you're not being run from the TTY, then your `Card` class can be used more abstractly.
 
@@ -95,6 +99,9 @@ Your bin script might have been something like:
 #!/bin/bash
 
 require 'card-processor'
+
+# don't actually do this, you would want
+# to use a proper CLI arguments parser
 
 card_number, expiration, cvv = ARGV
 
@@ -122,12 +129,16 @@ Conserve the mental energy you have for the creative problems you will face, lik
 
 They don't depend on one another in theory, so keep them separate in practice. 
 
-3) **Don't be discouraged.**  I understand you thought this code was good, and the fact that it actually isn't does not take away from the fact that it still represents and improvement for you relative to where you were last week.  
+3) **Don't be discouraged.**  I understand you thought this code was good, and the fact that it actually isn't does not take away from the fact that it still represents and improvement for you relative to where you were last week.  When you look back on this in a few months you will most likely laugh.  This is a great and beautiful thing.
 
 
-#### That is the only thing that matters.  Be better than you were last week.
+#### In fact this is the only thing that matters.  Be better than you were last week.
 
 You'll never stop learning, improving, correcting your
 mistakes and discovering new ways of doing things.  
 
 That is the beauty of this job and what makes it so utterly addictive.
+
+Keep doing your thing, and reach out any time for help
+
+JS
